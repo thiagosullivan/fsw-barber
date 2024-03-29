@@ -5,7 +5,7 @@ import { Calendar } from "@/app/_components/ui/calendar";
 import { Card, CardContent } from "@/app/_components/ui/card";
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/app/_components/ui/sheet";
 import { Barbershop, Booking, Service } from "@prisma/client";
-import { format, setDate, setHours, setMinutes } from "date-fns";
+import { addDays, format, setDate, setHours, setMinutes } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -178,7 +178,7 @@ const ServiceItem = ({service, barbershop, isAuthenticated}: ServiceItemProps) =
                                             selected={date}
                                             onSelect={handleDateClick}                                            
                                             locale={ptBR}
-                                            fromDate={new Date()}
+                                            fromDate={addDays(new Date(), 1)}
                                             styles={{
                                                 head_cell: {
                                                     width: '100%',
